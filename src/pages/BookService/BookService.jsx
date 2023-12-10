@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const BookService = () => {
@@ -37,7 +38,10 @@ const BookService = () => {
         .then(data => {
             console.log(data);
             if(data.insertedId){
-                alert('service book successfully')
+                Swal.fire({
+                    title: "Success!",
+                    text: "Your file has been Success.",
+                  });
             }
         })
 

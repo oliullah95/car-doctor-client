@@ -30,9 +30,9 @@ const Routes = createBrowserRouter([
           element: <About></About>
         },
         
-        {
+        {  
         path: 'book/:id',
-        element: <BookService></BookService>,
+        element: <PrivateRoutes><BookService></BookService></PrivateRoutes>,
         loader: ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
         },
        {
@@ -40,7 +40,7 @@ const Routes = createBrowserRouter([
         element: <PrivateRoutes><Bookings></Bookings></PrivateRoutes>
        }
       ]
-    },
+    }
   ]);
   
 
