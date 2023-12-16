@@ -14,10 +14,12 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(name, email, password)
+
         createUser(email, password)
             .then(result => {
                 const user = result.user;
-                if(user.accessToken) {
+                console.log('created user', user);
+                if(createUser) {
                     e.target.reset()
                     goHome('/')
                 }

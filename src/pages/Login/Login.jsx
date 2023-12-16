@@ -1,18 +1,20 @@
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import img from '../../assets/images/login/login.svg'
-import { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
 import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
+// import { useContext } from 'react';
+// import { AuthContext } from '../../Providers/AuthProvider';
+
 
 const Login = () => {
-
-    const { signIn } = useContext(AuthContext);
+   const {signIn} = useAuth();
+    // const { signIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     console.log(location);
     navigate(location?.state ? location?.state : '/');
 
-
+    
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;

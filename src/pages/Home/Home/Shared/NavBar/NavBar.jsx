@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
 import logo from '../../../../../assets/logo.svg'
-import { useContext } from "react";
-import { AuthContext } from "../../../../../Providers/AuthProvider";
+import useAuth from "../../../../../hooks/useAuth";
+// import { useContext } from "react";
+// import { AuthContext } from "../../../../../Providers/AuthProvider";
 
 
 const NavBar = () => {
+    const { user, logOut } = useAuth();
 
-    const { user, logOut } = useContext(AuthContext);
+    // const { user, logOut } = useContext(AuthContext);
 
     const handleLogOut = () => {
         logOut()
-            .then(() => {})
+            .then(() => { })
             .catch(error => console.log(error))
     }
 
@@ -18,10 +20,10 @@ const NavBar = () => {
         <li className="hover:bg-[#ff3811] rounded-lg"><Link className="hover:text-white" to="/">Home</Link></li>
         <li className="hover:bg-[#ff3811] rounded-lg"><Link className="hover:text-white" to="/about">About</Link></li>
         {user?.email ? <>
-            <li><Link to="/bookings">My Bookings</Link></li>
+            <li ><Link to="/bookings">My Bookings</Link></li>
             <li><button onClick={handleLogOut}>log Out</button></li>
-        </> 
-        : <li><Link to="/login">Login</Link></li>
+        </>
+            : <li><Link to="/login">Login</Link></li>
         }
         {/* <li className="hover:bg-[#ff3811] rounded-lg"><Link className="hover:text-white" to="/about">Blog</Link></li>
         <li className="hover:bg-[#ff3811] rounded-lg"><Link className="hover:text-white" to="/about">Contact</Link></li> */}
